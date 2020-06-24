@@ -1,0 +1,181 @@
+<templateSet group="Flamingo">
+  <template name="frouteregister" value="registry.Route(&quot;$PATH$&quot;, &quot;$ROUTE$&quot;)&#10;registry.Handle$METHOD$(&quot;$ROUTE$&quot;, r.$HANDLER$)&#10;$END$" description="Routes registration snippet" toReformat="true" toShortenFQNames="true">
+    <variable name="PATH" expression="" defaultValue="&quot;/&quot;" alwaysStopAt="true" />
+    <variable name="ROUTE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="METHOD" expression="enum(&quot;Any&quot;,&quot;Get&quot;,&quot;Post&quot;,&quot;Data&quot;,&quot;Put&quot;,&quot;Delete&quot;,&quot;Head&quot;,&quot;Options&quot;)" defaultValue="" alwaysStopAt="true" />
+    <variable name="HANDLER" expression="complete()" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="GO_BLOCK" value="true" />
+      <option name="GO_EXPRESSION" value="true" />
+      <option name="GO_FILE" value="true" />
+      <option name="GO_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="fbind" value="injector.Bind$KIND$((*$INTERFACE$)(nil)).To$WHAT$($TYPE$)" description="Bind Interface snippet" toReformat="true" toShortenFQNames="true">
+    <variable name="KIND" expression="enum(&quot;&quot;,&quot;Map&quot;,&quot;Multi&quot;)" defaultValue="" alwaysStopAt="true" />
+    <variable name="INTERFACE" expression="complete()" defaultValue="" alwaysStopAt="true" />
+    <variable name="WHAT" expression="enum(&quot;&quot;,&quot;Instance&quot;,&quot;Provider&quot;)" defaultValue="" alwaysStopAt="true" />
+    <variable name="TYPE" expression="complete()" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="GO_BLOCK" value="true" />
+      <option name="GO_EXPRESSION" value="true" />
+      <option name="GO_FILE" value="true" />
+      <option name="GO_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="ftfuncbind" value="flamingo.BindTemplateFunc(injector, &quot;$NAME$&quot;, new($FUNC$))" description="Bind template func snippet" toReformat="true" toShortenFQNames="true">
+    <variable name="NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="FUNC" expression="complete()" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="GO_BLOCK" value="true" />
+      <option name="GO_EXPRESSION" value="true" />
+      <option name="GO_FILE" value="true" />
+      <option name="GO_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="finj" value="// Inject dependencies&#10;func ($RECIEVER$ *$TYPE$) Inject(&#10;&#9;$DEPS$,&#10;) *$TYPE$ {&#10;&#9;$RECIEVER$.$FIELD$ = $VALUE$ &#10;&#9;&#10;&#9;return $RECIEVER$&#10;}" description="Dependency injection snippet" toReformat="true" toShortenFQNames="true">
+    <variable name="RECIEVER" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="TYPE" expression="complete()" defaultValue="" alwaysStopAt="true" />
+    <variable name="DEPS" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="FIELD" expression="complete()" defaultValue="" alwaysStopAt="true" />
+    <variable name="VALUE" expression="complete()" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="GO_BLOCK" value="true" />
+      <option name="GO_EXPRESSION" value="true" />
+      <option name="GO_FILE" value="true" />
+      <option name="GO_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="faction" value="// $NAME$ $COMMENT$&#10;func (c *$TYPE$) $NAME$($CTX$ context.Context, $R$ *web.Request) web.Result {&#10;&#10;&#9;return c.responder.$METHOD$&#10;}" description="Controller Action" toReformat="false" toShortenFQNames="true">
+    <variable name="TYPE" expression="complete()" defaultValue="" alwaysStopAt="true" />
+    <variable name="NAME" expression="" defaultValue="&quot;MyAction&quot;" alwaysStopAt="true" />
+    <variable name="CTX" expression="" defaultValue="&quot;ctx&quot;" alwaysStopAt="true" />
+    <variable name="R" expression="" defaultValue="&quot;r&quot;" alwaysStopAt="true" />
+    <variable name="METHOD" expression="complete()" defaultValue="" alwaysStopAt="true" />
+    <variable name="COMMENT" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="GO" value="true" />
+      <option name="GO_TAG" value="false" />
+      <option name="GO_TAG_LITERAL" value="false" />
+      <option name="GO_TYPE" value="false" />
+    </context>
+  </template>
+  <template name="fcontroller" value="// $TYPE$ $COMMENT$&#10;$TYPE$ struct {&#10;&#9;responder   *web.Responder&#10;}" description="Controller Type" toReformat="true" toShortenFQNames="true">
+    <variable name="TYPE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="COMMENT" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="GO_TYPE" value="true" />
+    </context>
+  </template>
+  <template name="ffilter" value="// Filter $COMMENT$&#10;func (f *$TYPE$) Filter($CTX$ context.Context, $R$ *web.Request, $W$ http.ResponseWriter, $CHAIN$ *web.FilterChain) web.Result {&#10;&#10;&#9;return $CHAIN$.Next(ctx, r, w)&#10;}&#10;" description="Flamingo Router Filter" toReformat="false" toShortenFQNames="true">
+    <variable name="TYPE" expression="complete()" defaultValue="" alwaysStopAt="true" />
+    <variable name="CTX" expression="" defaultValue="&quot;ctx&quot;" alwaysStopAt="true" />
+    <variable name="R" expression="" defaultValue="&quot;r&quot;" alwaysStopAt="true" />
+    <variable name="W" expression="" defaultValue="&quot;w&quot;" alwaysStopAt="true" />
+    <variable name="CHAIN" expression="" defaultValue="&quot;chain&quot;" alwaysStopAt="true" />
+    <variable name="COMMENT" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="GO_BLOCK" value="true" />
+      <option name="GO_EXPRESSION" value="true" />
+      <option name="GO_FILE" value="true" />
+      <option name="GO_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="ftestmod" value="func TestModule_Configure(t *testing.T) {&#10;&#9;if err := dingo.TryModule(new($MODULE$)); err != nil {&#10;&#9;&#9;t.Error(err)&#10;&#9;}&#10;}" description="flamingo module test function" toReformat="false" toShortenFQNames="true">
+    <variable name="MODULE" expression="complete()" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="GO" value="true" />
+      <option name="GO_TAG" value="false" />
+      <option name="GO_TAG_LITERAL" value="false" />
+      <option name="GO_TYPE" value="false" />
+    </context>
+  </template>
+  <template name="fconfigure" value="// Configure DI&#10;func (m *$MODULE$) Configure(injector *dingo.Injector) {&#10;&#9;web.BindRoutes(injector, new($ROUTES$))&#10;}" description="Flamingo Module Configuration" toReformat="false" toShortenFQNames="true">
+    <variable name="MODULE" expression="complete()" defaultValue="" alwaysStopAt="true" />
+    <variable name="ROUTES" expression="complete()" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="GO" value="true" />
+      <option name="GO_TAG" value="false" />
+      <option name="GO_TAG_LITERAL" value="false" />
+      <option name="GO_TYPE" value="false" />
+    </context>
+  </template>
+  <template name="fdefaultcfg" value="// DefaultConfig for the module&#10;func (m *$MODULE$) DefaultConfig() config.Map {&#10;&#9;return config.Map{&#10;&#9;&#9;$END$&#10;&#9;}&#10;}" description="Flamingo Module Default Configuration" toReformat="false" toShortenFQNames="true">
+    <variable name="MODULE" expression="" defaultValue="Module" alwaysStopAt="true" />
+    <context>
+      <option name="GO" value="true" />
+      <option name="GO_TAG" value="false" />
+      <option name="GO_TAG_LITERAL" value="false" />
+      <option name="GO_TYPE" value="false" />
+    </context>
+  </template>
+  <template name="fdepends" value="// Depends on other modules&#10;func (module *$MODULE$) Depends() []dingo.Module {&#10;&#9;return []dingo.Module{&#10;&#9;&#9;$END$,&#10;&#9;}&#10;}" description="Flamingo Module Dependency Configuration" toReformat="false" toShortenFQNames="true">
+    <variable name="MODULE" expression="" defaultValue="Module" alwaysStopAt="true" />
+    <context>
+      <option name="GO" value="true" />
+      <option name="GO_TAG" value="false" />
+      <option name="GO_TAG_LITERAL" value="false" />
+      <option name="GO_TYPE" value="false" />
+    </context>
+  </template>
+  <template name="froutes" value="// Routes definition for the module&#10;func (r *$ROUTES$) Routes(registry *web.RouterRegistry) {&#10;&#9;frouteregister$END$&#10;}" description="Routes Module" toReformat="true" toShortenFQNames="true">
+    <variable name="ROUTES" expression="complete()" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="GO_BLOCK" value="true" />
+      <option name="GO_EXPRESSION" value="true" />
+      <option name="GO_FILE" value="true" />
+      <option name="GO_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="fbindevent" value="flamingo.BindEventSubscriber(injector).To$WHAT$($TYPE$)" description="Bind Event Subscriber snippet" toReformat="true" toShortenFQNames="true">
+    <variable name="WHAT" expression="enum(&quot;&quot;,&quot;Instance&quot;,&quot;Provider&quot;)" defaultValue="" alwaysStopAt="true" />
+    <variable name="TYPE" expression="complete()" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="GO_BLOCK" value="true" />
+      <option name="GO_EXPRESSION" value="true" />
+      <option name="GO_FILE" value="true" />
+      <option name="GO_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="factiondata" value="// $NAME$ $COMMENT$&#10;func (c *$TYPE$) $NAME$($CTX$ context.Context, $R$ *web.Request, $CALL_PARAMS$ web.RequestParams) interface{} {&#10;&#10;&#9;return c.responder.Data($DATA$)&#10;}" description="Controller Data Action" toReformat="false" toShortenFQNames="true">
+    <variable name="TYPE" expression="complete()" defaultValue="" alwaysStopAt="true" />
+    <variable name="NAME" expression="" defaultValue="&quot;MyAction&quot;" alwaysStopAt="true" />
+    <variable name="CTX" expression="" defaultValue="&quot;ctx&quot;" alwaysStopAt="true" />
+    <variable name="R" expression="" defaultValue="&quot;r&quot;" alwaysStopAt="true" />
+    <variable name="CALL_PARAMS" expression="" defaultValue="&quot;callParams&quot;" alwaysStopAt="true" />
+    <variable name="DATA" expression="complete()" defaultValue="" alwaysStopAt="true" />
+    <variable name="COMMENT" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="GO" value="true" />
+      <option name="GO_TAG" value="false" />
+      <option name="GO_TAG_LITERAL" value="false" />
+      <option name="GO_TYPE" value="false" />
+    </context>
+  </template>
+  <template name="finjectcfg" value="`inject:&quot;config:$END$&quot;`" description="Flamingo Config injection tag" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="GO_TAG" value="true" />
+      <option name="GO_TAG_LITERAL" value="true" />
+    </context>
+  </template>
+  <template name="fcueconfig" value="// CueConfig for the module&#10;func (m *$MODULE$) CueConfig() string {&#10;&#9;return `$END$`&#10;}" description="Flamingo Module Cue Configuration" toReformat="false" toShortenFQNames="true">
+    <variable name="MODULE" expression="" defaultValue="Module" alwaysStopAt="true" />
+    <context>
+      <option name="GO" value="true" />
+      <option name="GO_TAG" value="false" />
+      <option name="GO_TAG_LITERAL" value="false" />
+      <option name="GO_TYPE" value="false" />
+    </context>
+  </template>
+  <template name="flegacyconfigmap" value="// FlamingoLegacyConfigAlias maps legacy config entries to new ones&#10;func (m *$MODULE$) FlamingoLegacyConfigAlias() map[string]string {&#10;&#9;return map[string]string{&#10;&#9;&#9;&quot;$OLDCONFIGPATH$&quot;: &quot;$NEWCONFIGPATH$&quot;,&#10;&#9;}&#10;}" description="Flamingo Module Legacy Configuration Mapping" toReformat="false" toShortenFQNames="true">
+    <variable name="MODULE" expression="" defaultValue="Module" alwaysStopAt="true" />
+    <variable name="OLDCONFIGPATH" expression="" defaultValue="old.config.path" alwaysStopAt="true" />
+    <variable name="NEWCONFIGPATH" expression="" defaultValue="new.config.path" alwaysStopAt="true" />
+    <context>
+      <option name="GO" value="true" />
+      <option name="GO_TAG" value="false" />
+      <option name="GO_TAG_LITERAL" value="false" />
+      <option name="GO_TYPE" value="false" />
+    </context>
+  </template>
+</templateSet>
